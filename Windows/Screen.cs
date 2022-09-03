@@ -1,8 +1,9 @@
 ﻿using Emgu.CV;
 using Emgu.CV.CvEnum;
-using Emgu.CV.Structure;
 using System.Drawing;
+using Emgu.CV.Structure;
 using System.Runtime.InteropServices;
+using PublicUtility.ScreenReader.Structs;
 
 namespace PublicUtility.ScreenReader.Windows {
 
@@ -50,23 +51,14 @@ namespace PublicUtility.ScreenReader.Windows {
       return response;
     }
 
-    internal static Bitmap TakeScreenshot(BoxOfScreen box) {
+    internal static Bitmap TakeScreenshot(BoxOfScreen box = default) {
       if(OperatingSystem.IsWindows()) {
+        if(!box.Filled)
+          box = new(GetScreenSizeOnWindows(), new(1,1));
+
         Bitmap bmp = new(box.Size.Width, box.Size.Height);
         Graphics graphics = Graphics.FromImage(bmp);
         graphics.CopyFromScreen(box.Point.X, box.Point.Y, 0, 0, bmp.Size);
-        return bmp;
-      }
-
-      return default;
-    }
-
-    internal static Bitmap TakeScreenshot() {
-      var size = GetScreenSizeOnWindows();
-      if(OperatingSystem.IsWindows()) {
-        Bitmap bmp = new(size.Width, size.Height);
-        Graphics graphics = Graphics.FromImage(bmp);
-        graphics.CopyFromScreen(0, 0, 0, 0, bmp.Size);
         return bmp;
       }
 

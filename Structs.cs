@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace PublicUtility.ScreenReader {
+﻿namespace PublicUtility.ScreenReader.Structs {
   public readonly record struct PixelColor(byte Alpha, byte Red, byte Green, byte Blue);
 
   public readonly record struct ScreenSize(int Width, int Height);
