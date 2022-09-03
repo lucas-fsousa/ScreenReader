@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>disable</Nullable>
+    <PackageId>PublicUtility.$(AssemblyName)</PackageId>
+    <Title>PublicUtility.ScreenReader</Title>
+    <PackAsTool>False</PackAsTool>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
+    <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Emgu.CV" Version="4.5.5.4823" />
+    <PackageReference Include="Emgu.CV.Bitmap" Version="4.5.5.4823" />
+    <PackageReference Include="Emgu.CV.runtime.linux-arm" Version="4.5.5.4823" />
+    <PackageReference Include="Emgu.CV.runtime.ubuntu.20.04-x64" Version="4.5.5.4823" />
+    <PackageReference Include="Emgu.CV.runtime.windows" Version="4.5.5.4823" />
+  </ItemGroup>
+
+</Project>
