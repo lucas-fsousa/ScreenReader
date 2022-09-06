@@ -10,6 +10,12 @@
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageRequireLicenseAcceptance>True</PackageRequireLicenseAcceptance>
     <EnforceCodeStyleInBuild>False</EnforceCodeStyleInBuild>
+    <Description>A facilitator for manipulating screen coordinates</Description>
+    <AssemblyVersion></AssemblyVersion>
+    <FileVersion></FileVersion>
+    <PackageReleaseNotes>namespace movement
+helpers for the PublicUtility.Nms assembly</PackageReleaseNotes>
+    <PackageProjectUrl>https://github.com/lucas-fsousa/ScreenReader</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +24,7 @@
     <PackageReference Include="Emgu.CV.runtime.linux-arm" Version="4.5.5.4823" />
     <PackageReference Include="Emgu.CV.runtime.ubuntu.20.04-x64" Version="4.5.5.4823" />
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.5.5.4823" />
+    <PackageReference Include="PublicUtility.Nms" Version="1.0.1" />
   </ItemGroup>
 
 </Project>

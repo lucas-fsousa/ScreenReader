@@ -3,7 +3,7 @@ using Emgu.CV.CvEnum;
 using System.Drawing;
 using Emgu.CV.Structure;
 using System.Runtime.InteropServices;
-using PublicUtility.ScreenReader.Structs;
+using PublicUtility.Nms.Structs;
 
 namespace PublicUtility.ScreenReader.Windows {
 
@@ -14,7 +14,7 @@ namespace PublicUtility.ScreenReader.Windows {
 
     internal static ScreenSize GetScreenSizeOnWindows() => new(GetSystemMetrics(0), GetSystemMetrics(1));
 
-    internal static IList<BoxOfScreen> LocateAllOnScreenForWindows(string imagePath, double confidence = 0.90, BoxOfScreen region = default) {
+    internal static IList<BoxOfScreen> LocateAllOnScreen(string imagePath, double confidence = 0.90, BoxOfScreen region = default) {
       var response = new List<BoxOfScreen>();
 
       if(OperatingSystem.IsWindows()) {

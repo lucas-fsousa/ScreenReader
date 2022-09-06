@@ -1,13 +1,15 @@
-﻿using System.Drawing;
+﻿using PublicUtility.Nms;
+using PublicUtility.Nms.Structs;
+using System.Drawing;
 using System.Drawing.Imaging;
-using PublicUtility.ScreenReader.Structs;
+
 
 namespace PublicUtility.ScreenReader {
   public static class ScreenManager {
 
     public static IList<BoxOfScreen> LocateAllOnScreen(string imagePath, double confidence = 0.90, BoxOfScreen region = default) {
       if(OperatingSystem.IsWindows())
-        return Windows.Screen.LocateAllOnScreenForWindows(imagePath, confidence, region);
+        return Windows.Screen.LocateAllOnScreen(imagePath, confidence, region);
 
 
       throw new PlatformNotSupportedException("This platform does not yet support this action.");
@@ -22,17 +24,16 @@ namespace PublicUtility.ScreenReader {
       return new(0, 0);
     }
 
-    public static Stream PrintScreen(BoxOfScreen box = default) {
-      using var ms = new MemoryStream();
-      if(OperatingSystem.IsWindows()) {
-        var bmp = Windows.Screen.TakeScreenshot(box);
-        bmp.Save(ms, ImageFormat.Png);
-      }
+    public static ImageStream PrintScreen(BoxOfScreen box = default) {
+      using var imgStream = new ImageStream();
+      if(OperatingSystem.IsWindows())
+        Windows.Screen.TakeScreenshot(box).Save(imgStream, ImageFormat.Png);
 
-      if(ms.Length <= 0)
+      if(imgStream.Length <= 0)
         throw new PlatformNotSupportedException("this platform does not yet support this action.");
       
-      return ms;
+      return imgStream;
     }
+  
   }
 }
