@@ -1,11 +1,10 @@
 ﻿using Emgu.CV;
-using Emgu.CV.CvEnum;
-using System.Drawing;
 using Emgu.CV.Structure;
-using System.Runtime.InteropServices;
-using PublicUtility.Nms.Structs;
 using PublicUtility.Nms;
+using PublicUtility.Nms.Structs;
+using System.Drawing;
 using System.Drawing.Imaging;
+using System.Runtime.InteropServices;
 
 namespace PublicUtility.ScreenReader.Windows {
 

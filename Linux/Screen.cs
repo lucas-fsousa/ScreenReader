@@ -1,15 +1,7 @@
-﻿using Emgu.CV.Structure;
-using Emgu.CV;
-using PublicUtility.Nms;
+﻿using Emgu.CV;
+using Emgu.CV.Structure;
 using PublicUtility.Nms.Structs;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
 using System.Diagnostics;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace PublicUtility.ScreenReader.Linux {
   internal static class Screen {
@@ -55,8 +47,8 @@ namespace PublicUtility.ScreenReader.Linux {
     }
 
     internal static IList<BoxOfScreen> LocateAllOnScreen(string imagePath, double confidence = 0.90, BoxOfScreen region = default) {
-      var source = new Image<Gray, byte>(imagePath);
-      var template = new Image<Gray, byte>(TakeScreenshot(region));
+      var source = ImageMod.ToGrayImage(imagePath);
+      var template = ImageMod.ToGrayImage(TakeScreenshot(region));
       var response = ImageMod.CalcConfidence(source, template, confidence);
       return response;
     }
