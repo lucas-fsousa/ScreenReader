@@ -13,9 +13,9 @@
     <Description>A facilitator for manipulating screen coordinates</Description>
     <AssemblyVersion></AssemblyVersion>
     <FileVersion></FileVersion>
-    <PackageReleaseNotes>namespace movement
-helpers for the PublicUtility.Nms assembly</PackageReleaseNotes>
+    <PackageReleaseNotes></PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/lucas-fsousa/ScreenReader</PackageProjectUrl>
+    <NeutralLanguage>en</NeutralLanguage>
   </PropertyGroup>
 
   <ItemGroup>
