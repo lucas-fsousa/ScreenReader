@@ -1,9 +1,10 @@
-﻿using Emgu.CV;
-using Emgu.CV.Structure;
-using PublicUtility.Nms.Structs;
+﻿using PublicUtility.Nms.Structs;
 using System.Diagnostics;
+using IS = SixLabors.ImageSharp;
 
 namespace PublicUtility.ScreenReader.Linux {
+  internal readonly record struct LinuxScreenSettings(string Path, IS.Image Image);
+
   internal static class Screen {
     private static string Terminal(string program, string command) {
       try {
@@ -32,7 +33,7 @@ namespace PublicUtility.ScreenReader.Linux {
       return new ScreenSize(w, h);
     }
 
-    internal static string TakeScreenshot(BoxOfScreen box) {
+    internal static LinuxScreenSettings TakeScreenshot(BoxOfScreen box) {
       string path = string.Concat("/tmp/", DateTime.Now.Ticks.ToString("x2"));
       try {
         if(box.Filled)
@@ -40,7 +41,7 @@ namespace PublicUtility.ScreenReader.Linux {
         else
           Terminal($"scrot", path);
 
-        return path;
+        return new(path, IS.Image.Load(path));
       } catch(Exception ex) {
         throw new Exception("Make sure you have \"scrot\" installed. If not, try: \"sudo apt install scrot\" for ubuntu or debian. More info in: [ https://github.com/resurrecting-open-source-projects/scrot ]", ex);
       }
@@ -48,7 +49,7 @@ namespace PublicUtility.ScreenReader.Linux {
 
     internal static IList<BoxOfScreen> LocateAllOnScreen(string imagePath, double confidence = 0.90, BoxOfScreen region = default) {
       var source = ImageMod.ToGrayImage(imagePath);
-      var template = ImageMod.ToGrayImage(TakeScreenshot(region));
+      var template = ImageMod.ToGrayImage(TakeScreenshot(region).Path);
       var response = ImageMod.CalcConfidence(source, template, confidence);
       return response;
     }

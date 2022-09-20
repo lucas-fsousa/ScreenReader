@@ -1,9 +1,10 @@
 ﻿using PublicUtility.Nms;
 using PublicUtility.Nms.Structs;
 using System.Drawing;
-
+using IS = SixLabors.ImageSharp;
 
 namespace PublicUtility.ScreenReader {
+
   public static class ScreenManager {
 
     public static IList<BoxOfScreen> LocateAllOnScreen(string imagePath, double confidence = 0.90, BoxOfScreen region = default) {
@@ -29,25 +30,21 @@ namespace PublicUtility.ScreenReader {
       return new(0, 0);
     }
 
-    public static ImageStream PrintScreen(BoxOfScreen box = default) {
-      ImageStream imgStream;
-      if(OperatingSystem.IsWindows()) { 
-        imgStream = Windows.Screen.TakeScreenshot(box);
+    public static IS.Image PrintScreen(BoxOfScreen box = default) {
+      IS.Image image;
+      
+      if(OperatingSystem.IsWindows()) {
+        image = Windows.Screen.TakeScreenshot(box);
       
       } else if(OperatingSystem.IsLinux()) {
-        var path = Linux.Screen.TakeScreenshot(box);
-        using var file = new FileStream(path, FileMode.OpenOrCreate);
-        using var stream = new ImageStream();
-        var buffer = new byte[file.Length];
-        file.Read(buffer);
-        stream.Write(buffer);
-        return stream;
-
+        image = Linux.Screen.TakeScreenshot(box).Image;
+   
       } else { 
         throw new PlatformNotSupportedException("This system does not yet support this action.");
+
       }
 
-      return imgStream;
+      return image;
     }
   
   }

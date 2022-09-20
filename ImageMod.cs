@@ -1,22 +1,13 @@
-﻿using Emgu.CV.Structure;
-using Emgu.CV;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Emgu.CV;
 using Emgu.CV.CvEnum;
+using Emgu.CV.Structure;
 using PublicUtility.Nms.Structs;
+using PublicUtility.Nms;
+using SixLabors.ImageSharp;
 
 namespace PublicUtility.ScreenReader {
   internal static class ImageMod {
-    internal static Image<Gray, byte> ToGrayImage(string filePath) {
-      Image<Gray, byte> grayImage;
-      var input = new Image<Bgr, byte>(filePath);
-
-      grayImage = input.Convert<Gray, byte>();
-      return grayImage;
-    }
+    internal static Image<Gray, byte> ToGrayImage(string filePath) => new Image<Bgr, byte>(filePath).Convert<Gray, byte>();
 
     internal static Image<Gray, byte> ToGrayImage(this Image<Bgr, byte> image) => image.Convert<Gray, byte>();
 
