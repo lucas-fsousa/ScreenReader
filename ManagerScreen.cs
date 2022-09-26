@@ -32,20 +32,18 @@ namespace PublicUtility.ScreenReader {
 
     public static IS.Image PrintScreen(BoxOfScreen box = default) {
       IS.Image image;
-      
-      if(OperatingSystem.IsWindows()) {
-        image = Windows.Screen.TakeScreenshot(box);
-      
-      } else if(OperatingSystem.IsLinux()) {
-        image = Linux.Screen.TakeScreenshot(box).Image;
-   
-      } else { 
-        throw new PlatformNotSupportedException("This system does not yet support this action.");
 
-      }
+      if(OperatingSystem.IsWindows())
+        image = Windows.Screen.TakeScreenshot(box);
+
+      else if(OperatingSystem.IsLinux())
+        image = Linux.Screen.TakeScreenshot(box).Image;
+
+      else
+        throw new PlatformNotSupportedException("This system does not yet support this action.");
 
       return image;
     }
-  
+
   }
 }

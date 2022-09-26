@@ -23,7 +23,6 @@ namespace PublicUtility.ScreenReader.Windows {
     internal static ScreenSize GetScreenSizeOnWindows() => new(GetSystemMetrics(0), GetSystemMetrics(1));
 
     internal static IList<BoxOfScreen> LocateAllOnScreen(string imagePath, double confidence = 0.90, BoxOfScreen region = default) {
-      IList<BoxOfScreen> response = default;
       Bitmap screenshot;
 
       if(region.Filled) {
@@ -38,7 +37,7 @@ namespace PublicUtility.ScreenReader.Windows {
 
       var source = new Image<Gray, byte>(imagePath);
       var template = screenshot.ToImage<Gray, byte>();
-      response = ImageMod.CalcConfidence(source, template, confidence);
+      var response = ImageMod.CalcConfidence(source, template, confidence);
 
       return response;
     }
