@@ -45,5 +45,14 @@ namespace PublicUtility.ScreenReader {
       return image;
     }
 
+    public static ScreenSize GetScreenSize() {
+      if(OperatingSystem.IsWindows())
+        return Windows.Screen.GetScreenSizeOnWindows();
+
+      if(OperatingSystem.IsLinux())
+        return Linux.Screen.GetScreenSizeOnLinux();
+
+      throw new PlatformNotSupportedException("This platform does not yet support this action.");
+    }
   }
 }
