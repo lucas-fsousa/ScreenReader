@@ -53,7 +53,12 @@ namespace PublicUtility.ScreenReader.Windows {
       graphics.CopyFromScreen(box.Point.X, box.Point.Y, 0, 0, bmp.Size);
       bmp.Save(path);
 
-      return IS.Image.Load(path);
+      var newImg = IS.Image.Load(path);
+
+      if(newImg != null)
+        File.Delete(path);
+
+      return newImg;
     }
 
     internal static PointIntoScreen GetXYOnWindowsByColor(Color color) {

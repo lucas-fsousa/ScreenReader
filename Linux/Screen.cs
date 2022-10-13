@@ -36,8 +36,9 @@ namespace PublicUtility.ScreenReader.Linux {
     internal static LinuxScreenSettings TakeScreenshot(BoxOfScreen box) {
       string path = string.Concat("/tmp/", DateTime.Now.Ticks.ToString("x2"));
       try {
+
         if(box.Filled)
-          Terminal("scrot", $"-a {box.Point.X},{box.Point.Y},{box.Size.Width},{box.Size.Height} -F {path}");
+          Terminal("scrot", $"-a {box.Point.X},{box.Point.Y},{box.Size.Width},{box.Size.Height} -f {path}");
         else
           Terminal($"scrot", path);
 
@@ -48,9 +49,12 @@ namespace PublicUtility.ScreenReader.Linux {
     }
 
     internal static IList<BoxOfScreen> LocateAllOnScreen(string imagePath, double confidence = 0.90, BoxOfScreen region = default) {
+      var tmpImg = TakeScreenshot(region).Path;
       var source = ImageMod.ToGrayImage(imagePath);
-      var template = ImageMod.ToGrayImage(TakeScreenshot(region).Path);
+      var template = ImageMod.ToGrayImage(tmpImg);
       var response = ImageMod.CalcConfidence(source, template, confidence);
+
+      File.Delete(tmpImg);
       return response;
     }
 
