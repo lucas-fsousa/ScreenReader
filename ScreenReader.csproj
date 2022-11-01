@@ -19,6 +19,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Authors>Lucas F Sousa</Authors>
     <Product>PublicUtility.$(AssemblyName)</Product>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
@@ -29,7 +30,7 @@
     <PackageReference Include="Emgu.CV.runtime.linux-arm" Version="4.5.5.4823" />
     <PackageReference Include="Emgu.CV.runtime.ubuntu.20.04-x64" Version="4.5.5.4823" />
     <PackageReference Include="Emgu.CV.runtime.windows" Version="4.6.0.5131" />
-    <PackageReference Include="PublicUtility.Nms" Version="1.0.1" />
+    <PackageReference Include="PublicUtility.Nms" Version="1.0.2" />
     <PackageReference Include="SixLabors.ImageSharp" Version="2.1.3" />
   </ItemGroup>
 
