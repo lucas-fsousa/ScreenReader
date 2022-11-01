@@ -2,6 +2,15 @@
 # Screen Reader
 The advanced screen reader allows the user to take a general screenshot of the main screen and locate small or large image snippets using AI for reading. Available for Linux and Windows.
 
+#### Method structures and Parameters
+- **ScreenSize** Stores the width and height of the screen.
+- **PointIntoScreen** Stores X and Y coordinates of the screen.
+- **BoxOfScreen** Represents the junction of the items "ScreenSize" and "PointIntoScreen"
+  - **Filled** Returns the validation of the box to know if it is filled or not filled.
+- **PixelColor** Represents the color of a screen pixel or an image.
+- **imagePath** Represents the path to an image
+- **confidence** How confident the script should be to signal that the image found is equal to the image provided in the path.
+
 ## Methods
 
 ### GetScreenSize
@@ -48,15 +57,6 @@ screenshotBox2.SaveAsPng(@"C:\Temp\customScreenshotSimplified.png");
 
 ### LocateOnScreen
 this method is used to locate parts of images or colors on the user's main screen and has some ways to use it, see below.
-
-#### Method structures and Parameters
-- **ScreenSize** Stores the width and height of the screen.
-- **PointIntoScreen** Stores X and Y coordinates of the screen.
-- **BoxOfScreen** Represents the junction of the items "ScreenSize" and "PointIntoScreen"
-  - **Filled** Returns the validation of the box to know if it is filled or not filled.
-- **PixelColor** Represents the color of a screen pixel or an image.
-- **imagePath** Represents the path to an image
-- **confidence** How confident the script should be to signal that the image found is equal to the image provided in the path.
 
 
 It will search the screen until it finds a pixel that contains the desired color, if not, its return will be an empty coordinate point that indicates the non-location of the color on the screen
