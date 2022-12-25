@@ -19,6 +19,7 @@
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Authors>Lucas F Sousa</Authors>
     <Product>PublicUtility.$(AssemblyName)</Product>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
   </PropertyGroup>
 
   <ItemGroup>
