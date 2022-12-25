@@ -13,13 +13,14 @@
     <Description>A facilitator for manipulating screen coordinates</Description>
     <AssemblyVersion></AssemblyVersion>
     <FileVersion></FileVersion>
-    <PackageReleaseNotes></PackageReleaseNotes>
+    <PackageReleaseNotes>update to .NET7</PackageReleaseNotes>
     <PackageProjectUrl>https://github.com/lucas-fsousa/ScreenReader</PackageProjectUrl>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <Authors>Lucas F Sousa</Authors>
     <Product>PublicUtility.$(AssemblyName)</Product>
     <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <Version>2.0.0</Version>
   </PropertyGroup>
 
   <ItemGroup>
