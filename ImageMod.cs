@@ -2,8 +2,6 @@
 using Emgu.CV.CvEnum;
 using Emgu.CV.Structure;
 using PublicUtility.Nms.Structs;
-using PublicUtility.Nms;
-using SixLabors.ImageSharp;
 
 namespace PublicUtility.ScreenReader {
   internal static class ImageMod {

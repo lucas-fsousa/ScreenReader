@@ -1,5 +1,4 @@
-﻿using PublicUtility.Nms;
-using PublicUtility.Nms.Structs;
+﻿using PublicUtility.Nms.Structs;
 using System.Drawing;
 using IS = SixLabors.ImageSharp;
 
